@@ -211,7 +211,7 @@ def build_problem_pool():
 df_pool = build_problem_pool()
 
 # ---------- UI: start ----------
-st.title("🧠 SPI 模擬テスト（本番版）")
+st.title("SPI 模擬テスト（CAREERDRAFT版）")
 st.write("言語35問 + 非言語35問 をランダム出題します（合計70問）。制限時間：%d分" % TIME_LIMIT_MIN)
 st.write("※このテストは学習用です。実際のSPI問題のコピーではありません。")
 
