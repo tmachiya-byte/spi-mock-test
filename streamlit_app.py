@@ -268,7 +268,7 @@ if st.session_state.started:
         if st.button("前へ"):
             if idx>0:
                 st.session_state.current -= 1
-                st.experimental_rerun()
+                st.rerun()
     with col2:
         if st.button("次へ"):
             sel_idx = opts.index(sel)
@@ -276,16 +276,18 @@ if st.session_state.started:
             st.session_state.correct[idx] = (sel_idx+1 == int(q['answer']))
             if st.session_state.current < total_q-1:
                 st.session_state.current += 1
-                st.experimental_rerun()
+                st.rerun()
     with col3:
         if st.button("提出して採点"):
             st.session_state.started = False
-            st.experimental_rerun()
+            st.rerun()
+
 
     if remaining <= 0:
         st.warning("時間切れです。自動で採点します。")
         st.session_state.started = False
-        st.experimental_rerun()
+        st.rerun()
+
 
     st.write(f"回答済み: {sum(1 for a in st.session_state.answers if a is not None)} / {total_q}")
 
@@ -368,4 +370,5 @@ if (not st.session_state.started) and ("questions" in st.session_state):
     if st.button("もう一度受ける"):
         for k in ["questions","current","answers","correct","started","start_time","time_limit","name","email"]:
             if k in st.session_state: del st.session_state[k]
-        st.experimental_rerun()
+        st.rerun()
+
